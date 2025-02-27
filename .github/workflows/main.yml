@@ -30,4 +30,4 @@ jobs:
 
       # Ejecutar pruebas en modo headless explícitamente
       - name: Run Playwright tests in headless mode
-        run: npx playwright test --project=chromium --headless
+        run: npx playwright test --project=chromium
