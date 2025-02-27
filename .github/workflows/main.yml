@@ -1,0 +1,30 @@
+name: Playwright Tests
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Se ejecuta todos los días a las 3 AM UTC
+  push:
+    branches:
+      - main  # Se ejecuta cuando hay cambios en main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛠️ Checkout del código
+        uses: actions/checkout@v3
+
+      - name: 🔧 Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Instalar dependencias
+        run: npm install
+
+      - name: 🎭 Instalar Playwright
+        run: npx playwright install --with-deps
+
+      - name: 🚀 Ejecutar pruebas
+        run: npx playwright test
