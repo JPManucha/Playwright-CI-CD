@@ -10,24 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Checkout del repositorio
+      # Checkout el repositorio
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Paso 2: Instalar Node.js
+      # Configurar Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
-      # Paso 3: Instalar dependencias
+      # Instalar dependencias
       - name: Install dependencies
         run: npm install
 
-      # Paso 4: Instalar Playwright con dependencias necesarias
+      # Instalar Playwright
       - name: Install Playwright with dependencies
         run: sudo npx playwright install --with-deps
 
-      # Paso 5: Ejecutar pruebas de Playwright
-      - name: Run Playwright tests
-        run: npx playwright test
+      # Ejecutar pruebas en modo headless explícitamente
+      - name: Run Playwright tests in headless mode
+        run: npx playwright test --project=chromium --headless
