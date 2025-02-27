@@ -4,9 +4,11 @@ import { LoginPage } from './loginPage';
 
 test('Login with correct User', async ({ page }) => {
 
+    const browser = await chromium.launch({ headless: true });
     const Login = new LoginPage(page)
 
     await Login.goToLoginPage()
     await Login.login('juampi_manucha@hotmail.com', 'Ingeniero2209')
+    await browser.close
 
 })

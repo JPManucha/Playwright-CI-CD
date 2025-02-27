@@ -5,7 +5,7 @@ import { Dashboard } from './dashboard';
 test ('Place Order', async ({page}) => {
 
     //En esta prueba vamos a utilizar las clases correspondientes a LoginPage y Dashboard
-
+    const browser = await chromium.launch({ headless: true });
     const Login = new LoginPage(page);
     const Dash = new Dashboard(page);
 
@@ -13,5 +13,5 @@ test ('Place Order', async ({page}) => {
     await Login.login('juampi_manucha@hotmail.com', 'Ingeniero2209')
     await Dash.goToDashboard();
     await Dash.clickOrder(page);
-
+    await browser.close
 })
