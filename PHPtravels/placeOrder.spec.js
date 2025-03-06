@@ -5,7 +5,7 @@ import { Dashboard } from './dashboard';
 test ('Place Order', async ({page}) => {
 
     //En esta prueba vamos a utilizar las clases correspondientes a LoginPage y Dashboard
-    const browser = await chromium.launch({ headless: true });
+    
     const Login = new LoginPage(page);
     const Dash = new Dashboard(page);
 
