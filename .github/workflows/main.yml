@@ -3,12 +3,12 @@ name: Playwright Tests
 on:
   push:
     branches:
-      - main  # Se ejecutará cada vez que haya un push a la rama 'main'
+      - main  
   pull_request:
     branches:
-      - main  # También en cada PR hacia 'main'
+      - main  
   schedule:
-    - cron: '0 3 * * *' # Se ejecutará todos los días a las 03:00 UTC
+    - cron: '0 3 * * *' 
 
 jobs:
   test:
@@ -23,12 +23,19 @@ jobs:
         with:
           node-version: 18
 
-      - name: Instalar dependencias
-        run: npm install
+      - name: Limpiar dependencias previas
+        run: rm -rf node_modules package-lock.json && npm install
+
+      - name: Verificar instalación de Playwright
+        run: npx --no-install playwright --version
+
+      - name: Dar permisos a Playwright
+        run: chmod +x node_modules/.bin/playwright
 
       - name: Instalar Playwright y sus dependencias
         run: npx playwright install --with-deps
 
       - name: Ejecutar pruebas de Playwright
         run: npx playwright test --project=chromium
+
 
