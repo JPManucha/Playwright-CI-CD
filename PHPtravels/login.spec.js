@@ -9,6 +9,5 @@ test('Login with correct User', async ({ page }) => {
 
     await Login.goToLoginPage()
     await Login.login('juampi_manucha@hotmail.com', 'Ingeniero2209')
-    await browser.close
 
 })

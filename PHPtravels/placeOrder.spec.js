@@ -13,5 +13,5 @@ test ('Place Order', async ({page}) => {
     await Login.login('juampi_manucha@hotmail.com', 'Ingeniero2209')
     await Dash.goToDashboard();
     await Dash.clickOrder(page);
-    await browser.close
+
 })
